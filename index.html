@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/sitio.webmanifest" />
+    <!-- <link rel="canonical" href="https://enflujo.com" /> -->
+
+    <title>..:: Pixeles | EnFlujo ::..</title>
+    <!-- <meta name="description" content="Descripción del sitio...." /> -->
+
+    <!-- OpenGraph -->
+    <meta property="og:locale" content="es_CO" />
+    <!-- <meta property="og:site_name" content="EnFlujo" /> -->
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content="https://enflujo.com" /> -->
+    <!-- <meta property="og:title" content="Titulo ..." /> -->
+    <!-- <meta property="og:description" content="Descripción ..." /> -->
+    <!-- <meta property="og:image" content="https://xxxxxx.jpg" /> -->
+    <!-- <meta property="og:image:alt" content="Texto que describe la imagen" /> -->
+    <!-- <meta property="og:image:width" content="1200" /> -->
+    <!-- <meta property="og:image:height" content="630" /> -->
+
+    <!-- Twitter -->
+    <!-- <meta name="twitter:card" content="summary_large_image" /> -->
+    <!-- <meta name="twitter:site" content="@labenflujo" /> -->
+    <!-- <meta name="twitter:creator" content="@labenflujo" /> -->
+    <!-- <meta name="twitter:url" content="https://enflujo.com" /> -->
+    <!-- <meta name="twitter:title" content="Titulo ..." /> -->
+    <!-- <meta name="twitter:description" content="Descripción ..." /> -->
+    <!-- <meta name="twitter:image" content="https://xxxxxx.jpg" /> -->
+    <!-- <meta name="twitter:image:alt" content="Texto que describe la imagen" /> -->
+  </head>
+  <body>
+    <h1>Pantalla OLED 128x64 Monocromática</h1>
+    <main class="contenedor">
+      <div class="columna col1-5">
+        <input type="file" id="entredaImg" accept="image/*" />
+        <img id="nila" />
+        <section>
+          <h2>Algoritmos</h2>
+          <ul id="opcionesAlgoritmos">
+            <li data-llave="atkinson" class="seleccionado">Atkinson</li>
+            <li data-llave="floyd">Floyd-Steinberg</li>
+            <span class="separador"></span>
+            <li data-llave="burkes">Burkes</li>
+            <li data-llave="sierra">Sierra</li>
+            <li data-llave="stevensonArce">Stevenson Arce</li>
+            <li data-llave="jarvisJudiceNinke">Jarvis, Judice, and Ninke (JJN)</li>
+            <li data-llave="stucki">Stucki</li>
+            <li data-llave="ordenado">Ordenado</li>
+            <li data-llave="ordenadoMedioTono">Ordenado Medio Tono</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="columna col2-5">
+        <div id="oled">
+          <div class="marco">
+            <span class="hueco"></span>
+
+            <div class="pines">
+              <span>GND</span>
+              <span>VCC</span>
+              <span>D0</span>
+              <span>D1</span>
+              <span>RES</span>
+              <span>DC</span>
+              <span>CS</span>
+            </div>
+
+            <span class="hueco"></span>
+          </div>
+
+          <div class="pantalla">
+            <canvas id="lienzo"></canvas>
+          </div>
+
+          <div class="marco">
+            <span class="hueco"></span>
+
+            <span class="hueco"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="contenedorCodigo" class="columna col2-5">
+        <pre><code id="codigo" class="language-cpp"></code></pre>
+      </div>
+    </main>
+
+    <script type="module" src="/src/programa.ts"></script>
+  </body>
+</html>
