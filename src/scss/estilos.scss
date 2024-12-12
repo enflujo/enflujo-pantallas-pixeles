@@ -9,6 +9,7 @@
   --placa: #163d64;
   --amarillo: #fdfd59;
   --azul: #00aaff;
+  --pcbNegro: #0D0B0A;
 }
 
 html {
@@ -135,6 +136,528 @@ body {
     }
   }
 }
+
+// INICIO estilos scss de la Matriz LED 8x8
+
+#matriz-leds-8x8{
+  display: flex;
+  flex-direction: column;
+    #pcb {
+      background-color: var(--pcbNegro);
+      border-radius: 5px;
+      width: 80%;
+      margin: 10% auto 0%;
+    
+      .leds {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto; //centra los leds
+        padding: 4%;
+    
+        .fila {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          margin: 4px 0px;
+    
+          .bombillo {
+            border-radius: 50%;
+            color: #cc00ff;
+          }
+    
+          span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            gap: 8px; //Espacio entre cada LED y la resistencia ubicada debajo del mismo
+      
+            &::before {
+              content: '';
+              background-color: #fff;
+              width: 40px;
+              height: 40px;
+            }
+      
+            &::after {
+              content: '';
+              background-color: #5e5e5e;
+              border: 1px solid #fff;
+              width: 24px;
+              height: 8px;
+            }
+    
+          }
+    
+          
+        }
+      }
+    
+    
+    }
+    
+    #placa-cara-opuesta{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--pcbNegro);
+      width: 80%;
+      height: 600px;
+      margin: 5% auto;
+      
+      #pines-voltaje-superiores {
+        display: flex;
+        flex-direction: row;
+        justify-content: end; //alinear los pines completamente a la derecha de la placa 
+        margin-top: 8px;
+        margin-right: 8px;
+
+        span{
+          display: flex;
+          flex-direction: column;
+          color: #fff;
+          transform: rotate(180deg);
+          font-size: 10px;
+          width: 16px;
+          text-align: center;
+
+          &::after {
+            content: '';
+            background-color: rgb(209, 209, 209);
+            width: 8px;
+            height: 24px;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 100%;
+            margin: auto;
+          }
+    
+        }
+      }
+      
+      #codigo-placa{
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: auto;
+      }
+
+      #pines-voltaje-inferiores {
+        display: flex;
+        flex-direction: row;
+        justify-content: start; //alinear los pines completamente a la izquierda de la placa
+        margin-bottom: 8px;
+        margin-left: 8px;
+    
+        span{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: #fff;
+          font-size: 10px;
+          font-size: 10px;
+          width: 16px;
+          text-align: center;
+          transform: rotate(180deg);
+          
+          &::before {
+            content: '';
+            background-color: rgb(209, 209, 209);
+            width: 8px;
+            height: 24px;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+            margin: auto;
+          }
+        }
+      }
+
+      #huecos-matriz{
+        position: absolute;
+        width: 100%;
+        height: 600px;
+        display: flex;
+        flex-direction: row;
+        //background: rgba(0, 255, 255, 0.527);
+        padding: 48px;
+
+        .huecos-izq{
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          background: transparent;
+          justify-content: space-between;
+          align-items: start;
+          span{
+            background: var(--grisClaro);
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .huecos-der{
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          background: transparent;
+          justify-content: space-between;
+          align-items: end;
+          span{
+            background: var(--grisClaro);
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+
+    }
+}
+
+// FIN de estilos Matriz LED 8x8
+
+/*--------------------------------*/
+
+// Aquí inician los estilos de la pantalla LCD 16X2
+#pantalla-lcd-16x2{
+  #placa-lcd-16x2 {
+    background-color: rgb(2, 119, 61);
+    color: #fff; //color de las letras de los pines
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+  
+    .franjas {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.3em;
+      height: 44px;
+    }
+  
+    .hueco {
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border: 4px solid goldenrod;
+      border-radius: 50%;
+    }
+
+    #hueco-arriba-derecha {
+      //background-color: #cc00ff;
+      margin-left: 40%; //me permite correr los pines de la placa hacia la izquierda
+    }
+  
+    .marco-pantalla {
+      position: relative;
+      background-color: var(--fondoOledOscuro);
+      border: 2px solid var(--grisOscuro);
+      padding: 1.5em;
+      width: 90%;
+      height: 160px;
+      margin: auto;
+  
+      #pantalla {
+        position: relative;
+        background: rgb(0, 0, 110);
+        width: 100%;
+        height: 104px;
+      }
+    }
+  
+    .pines {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      width: 45%;
+  
+      span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 8px;
+  
+        &::before {
+          content: '';
+          background-color: var(--grisOscuro);
+          border: 1px solid var(--grisClaro);
+          width: 8px;
+          height: 16px;
+          border-bottom-left-radius: 50px;
+          border-bottom-right-radius: 50px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+
+  #cara-opuesta-placa-lcd-16x2{
+    background-color: rgb(2, 119, 61);
+    color: #fff; //color de las letras de los pines
+    width: 90%;
+    //height: 320px;
+    height: auto;
+    margin: 40px auto;
+
+    #pcb-cara-opuesta-lcd1602{
+      position: relative;
+      justify-content: space-between;
+
+      .marco {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+      }
+      .hueco {
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border: 4px solid goldenrod;
+        border-radius: 50%;
+      }
+
+      .marco-pestanas {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2em;
+      }
+      .pestana {
+        width: 32px;
+        height: 16px;
+        background-color: goldenrod;
+        border: 2px solid rgb(0, 75, 6);
+      }
+
+      #funduino-lcm1602{
+        //display: none;
+        z-index: 100;
+        background: rgb(255, 0, 0);
+        position: absolute;
+        right: 8%;
+        width: 50%;
+
+        height: 120px; /*------*/
+
+        .marco{
+          display: flex;
+          flex-direction: row;
+          border: 2px solid var(--grisClaro);
+          span{
+            width: 8px;
+            height: 8px;
+            background: silver;
+            border-radius: 50%;
+          }
+        }
+
+        #funduino-componentes{
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          height: auto;
+
+          .funduino-comp-columna{
+            width: 25%;
+          }
+
+          #columna-2-funduino{
+            display: flex;
+            flex-direction: column;
+            .texto{
+              color: white;
+              font-size: 12px;
+              text-align: center;
+            }
+            #chip{
+              background: #000;
+              width: 60%;
+              height: 64px;
+              margin: 0 auto 4%;
+            }
+          }
+
+          #columna-3-funduino{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            span{
+              color: white;
+              font-size: 12px;
+              text-align: center;
+            }
+
+            #marco-condensador{
+              width: 80%;
+              height: 40px;
+              border: 2px solid white;
+              div{
+                background: #00aaff;
+                width: 32px;
+                height: 32px;
+                margin: auto;
+              }
+            }
+            #huecos-condensador{
+              width: 80%;
+              height: 32px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: space-between;
+
+              .marco-tres-huecos{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                margin: auto;
+                span{
+                  background: black;
+                  border: 2px solid silver;
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                }
+              }
+              
+            }
+          }
+
+          #columna-4-funduino{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            #pines-columna-4{
+              width: 90%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              margin: auto;
+
+              #nombres-pines{
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 4px;
+                .texto-pin{
+                  font-size: 10px;
+                }
+              }
+  
+              #conectores-pines{
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                gap: 4px;
+                border: 2px solid white;
+  
+                .dupont-pin{
+                  width: 12px;
+                  height: 12px;
+                  background: black;
+                }
+              }
+  
+              #huecos-pines{
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                gap: 4px;
+                border: 2px solid white;
+  
+                .hueco-pin{
+                  width: 12px;
+                  height: 12px;
+                  background: black;
+                  border: 4px solid silver;
+                  border-radius: 50%;
+
+                }
+              }
+
+            }
+
+          }
+        }
+
+      }
+
+      #circuito-posterior-lcd1602{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+
+        width: 80%;
+        height: auto; /*------*/
+        margin: auto;
+        //background-color: yellow;
+
+        //padding: 4em;
+        margin: 4% auto;
+
+        #circuitos-izq{
+          width: 20%;
+          //background: orange;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .contacto {
+            width: 80%;
+            height: 20px;
+            margin: 2px auto;
+            border: 2px solid white;
+          }
+          .j {
+            width: 30%;
+            height: 40px;
+          }
+        }
+
+        #circuitos-centro{
+          width: 60%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          .contacto-circular{
+            margin: 0% 10%;
+            background: #000;
+            border: 4px solid #fff;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+          }
+
+        }
+        #circuitos-der{
+          width: 20%;
+          background: black;
+        }
+
+      }
+    }
+
+  }
+}
+// Aquí terminan los estilos de la pantalla LCD 16X2
 
 #contenedorCodigo {
   position: fixed;
